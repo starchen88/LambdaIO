@@ -9,22 +9,23 @@ namespace LambdaIO.Test
         public void TestOutput()
         {
             var mapper = new DefaultOutputMapper<Foo>();
-            mapper.Add("Id", it => it.GetId());
-            mapper.Add("Name", it => it.Name);
+            mapper.Add("Index", (it, i) => i);
+            mapper.Add("Id", it => it.GetIntProp());
+            mapper.Add("Name", it => it.StringProp);
 
             var foos = new[]{
                 new Foo
                 {
-                    Id = 1,
-                    Name = "张3"
+                    IntProp = 1,
+                    StringProp = "张3"
                 },new Foo
                 {
-                    Id = 2,
-                    Name = "李4"
+                    IntProp = 2,
+                    StringProp = "李4"
                 },new Foo
                 {
-                    Id = 2,
-                    Name = null
+                    IntProp = 2,
+                    StringProp = null
                 }
             };
             var dt = foos.ToDataTable(mapper);
@@ -36,9 +37,9 @@ namespace LambdaIO.Test
             {
                 var foo = foos[i];
                 var row = dt.Rows[i];
-
-                Assert.Equal(row["Id"], foo.Id);
-                Assert.Equal(row["Name"], (object)foo.Name ?? DBNull.Value);
+                Assert.Equal(row["Index"], i);
+                Assert.Equal(row["Id"], foo.IntProp);
+                Assert.Equal(row["Name"], (object)foo.StringProp ?? DBNull.Value);
             }
         }
     }

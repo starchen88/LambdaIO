@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LambdaIO", "LambdaIO\LambdaIO.csproj", "{D0710B99-2688-4858-A115-A4A34E2D5A63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LambdaIO.Test", "LambdaIO.Test\LambdaIO.Test.csproj", "{EA1F6482-57B2-46FF-9B0F-411192FF74C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LambdaIO.Test", "LambdaIO.Test\LambdaIO.Test.csproj", "{EA1F6482-57B2-46FF-9B0F-411192FF74C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LambdaIO.NPOI", "LambdaIO.NPOI\LambdaIO.NPOI.csproj", "{C8828F0B-E86E-4F24-B290-C0CE0946C161}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{EA1F6482-57B2-46FF-9B0F-411192FF74C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA1F6482-57B2-46FF-9B0F-411192FF74C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA1F6482-57B2-46FF-9B0F-411192FF74C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8828F0B-E86E-4F24-B290-C0CE0946C161}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8828F0B-E86E-4F24-B290-C0CE0946C161}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8828F0B-E86E-4F24-B290-C0CE0946C161}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8828F0B-E86E-4F24-B290-C0CE0946C161}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

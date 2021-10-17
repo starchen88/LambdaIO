@@ -8,8 +8,9 @@ namespace LambdaIO.Test
 {
     public class Foo
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int GetId() => Id;
+        public int IntProp { get; set; }
+        public string StringProp { get; set; }
+        public int GetIntProp() => IntProp;
+        public Foo FooProp { get; set; }
     }
 }
