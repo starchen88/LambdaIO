@@ -2,9 +2,7 @@
 using NPOI.XSSF.UserModel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace LambdaIO.NPOI
 {
@@ -45,7 +43,6 @@ namespace LambdaIO.NPOI
             foreach (var item in outputMapper)
             {
                 var columnIndexExpression = Expression.Constant(columnIndex);
-                var cellType = typeof(ICell);
 
                 Expression setCellValueExpression = null;
                 CellType cellDataType;

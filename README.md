@@ -14,7 +14,7 @@
 var dt = OfficeHelper.ToDatatable(CreateTestData1List(), new Dictionary<string, Expression<Func<TestData1, object>>> {
     { "Id",it=>it.Id },
     { "Name",it=>it.Name },
-    { "Time",it=>it.Time}
+    { "Time",it=>it.Time }
 });
 ```
 但是这里的委托都是object类型，还是无法避免拆箱装箱问题，而且使用略繁琐。
@@ -23,8 +23,45 @@ var dt = OfficeHelper.ToDatatable(CreateTestData1List(), new Dictionary<string, 
 
 ## 如何使用
 
+### 导出至DataTable [DataTableTest.cs/TestOutput](/LambdaIO/LambdaIO.Test/DataTableTest.cs)
+
+```
+var mapper = new DefaultOutputMapper<Foo>();
+mapper.Add("Index", (it, i) => i);
+mapper.Add("IntProp", it => it.GetIntProp());
+mapper.Add("StringProp", it => it.StringProp);
+
+var foos = new[]{
+    ...
+};
+var result = foos.ToDataTable(mapper);
+```
+### 导出至Excel(NPOI/XSSF) [XSSFSheetTest.cs/TestOutput](/LambdaIO/LambdaIO.Test/XSSFSheetTest.cs)
+
+```
+var mapper = new DefaultOutputMapper<Foo>();
+mapper.Add("Index", (it, i) => i);
+mapper.Add("IntProp", it => it.GetIntProp());
+mapper.Add("StringProp", it => it.StringProp);
+mapper.Add("FooProp", it => it.FooProp);
+
+var foos = new[]{
+    ...
+};
+
+var workbook = new XSSFWorkbook();
+var excelSheet = (XSSFSheet)workbook.CreateSheet("Sheet1");
+
+foos.Fill(mapper, excelSheet);
+var path = ...;
+using (var fs = new FileStream(path, FileMode.Create, FileAccess.Write))
+{
+    workbook.Write(fs);
+}
+```
+
 快马加鞭更新中
 
-## 感谢
+## 致谢
 
-造轮子不易！写bug也不易！请多支持！分享、加星、反馈、参与话题、贡献代码、赞助……都是极好的！
+感谢分享！欢迎交流！

@@ -10,8 +10,8 @@ namespace LambdaIO.Test
         {
             var mapper = new DefaultOutputMapper<Foo>();
             mapper.Add("Index", (it, i) => i);
-            mapper.Add("Id", it => it.GetIntProp());
-            mapper.Add("Name", it => it.StringProp);
+            mapper.Add("IntProp", it => it.GetIntProp());
+            mapper.Add("StringProp", it => it.StringProp);
 
             var foos = new[]{
                 new Foo
@@ -24,22 +24,22 @@ namespace LambdaIO.Test
                     StringProp = "¿Ó4"
                 },new Foo
                 {
-                    IntProp = 2,
+                    IntProp = 3,
                     StringProp = null
                 }
             };
-            var dt = foos.ToDataTable(mapper);
+            var result = foos.ToDataTable(mapper);
 
-            Assert.Equal(mapper.Count, dt.Columns.Count);
-            Assert.Equal(foos.Length, dt.Rows.Count);
+            Assert.Equal(mapper.Count, result.Columns.Count);
+            Assert.Equal(foos.Length, result.Rows.Count);
 
             for (int i = 0; i < foos.Length; i++)
             {
                 var foo = foos[i];
-                var row = dt.Rows[i];
+                var row = result.Rows[i];
                 Assert.Equal(row["Index"], i);
-                Assert.Equal(row["Id"], foo.IntProp);
-                Assert.Equal(row["Name"], (object)foo.StringProp ?? DBNull.Value);
+                Assert.Equal(row["IntProp"], foo.IntProp);
+                Assert.Equal(row["StringProp"], (object)foo.StringProp ?? DBNull.Value);
             }
         }
     }

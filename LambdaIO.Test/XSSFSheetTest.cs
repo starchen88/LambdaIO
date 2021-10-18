@@ -18,9 +18,9 @@ namespace LambdaIO.Test
         {
             var mapper = new DefaultOutputMapper<Foo>();
             mapper.Add("Index", (it, i) => i);
-            mapper.Add("Id", it => it.GetIntProp());
-            mapper.Add("Name", it => it.StringProp);
-            mapper.Add("Parent", it => it.FooProp);
+            mapper.Add("IntProp", it => it.GetIntProp());
+            mapper.Add("StringProp", it => it.StringProp);
+            mapper.Add("FooProp", it => it.FooProp);
 
             var foos = new[]{
                 new Foo
@@ -35,7 +35,7 @@ namespace LambdaIO.Test
                     FooProp=new Foo()
                 },new Foo
                 {
-                    IntProp = 2,
+                    IntProp = 3,
                     StringProp = null,
                     FooProp=new Foo()
                 }
@@ -44,24 +44,12 @@ namespace LambdaIO.Test
             var workbook = new XSSFWorkbook();
             var excelSheet = (XSSFSheet)workbook.CreateSheet("Sheet1");
 
-
             foos.Fill(mapper, excelSheet);
             var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "导出Excel", "导出.xlsx");
             using (var fs = new FileStream(path, FileMode.Create, FileAccess.Write))
             {
                 workbook.Write(fs);
             }
-            //Assert.Equal(mapper.Count, dt.Columns.Count);
-            //Assert.Equal(foos.Length, dt.Rows.Count);
-
-            //for (int i = 0; i < foos.Length; i++)
-            //{
-            //    var foo = foos[i];
-            //    var row = dt.Rows[i];
-            //    Assert.Equal(row["Index"], i);
-            //    Assert.Equal(row["Id"], foo.Id);
-            //    Assert.Equal(row["Name"], (object)foo.Name ?? DBNull.Value);
-            //}
         }
     }
 }
