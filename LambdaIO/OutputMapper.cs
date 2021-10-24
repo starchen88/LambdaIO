@@ -28,7 +28,7 @@ namespace LambdaIO
         {
             return _replaceParameterExpressionVisitor.Visit(expression);
         }
-        private OutputMapper<TObject, TKey> Add(TKey key, Type valueType, Expression getValueExpression)
+        protected OutputMapper<TObject, TKey> Add(TKey key, Type valueType, Expression getValueExpression)
         {
             var result = _replaceParameterExpressionVisitor.Visit(getValueExpression);
             _keyAndGetValueExpressions.Add(key, Tuple.Create(valueType, result));
