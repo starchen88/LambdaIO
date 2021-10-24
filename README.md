@@ -23,7 +23,7 @@ var dt = OfficeHelper.ToDatatable(CreateTestData1List(), new Dictionary<string, 
 
 ## 如何使用
 
-### 导出至DataTable [DataTableTest.cs/TestOutput](/LambdaIO/LambdaIO.Test/DataTableTest.cs)
+### 导出至DataTable [DataTableTest.cs/TestOutput](/LambdaIO.Test/DataTableTest.cs)
 
 ###### 示例代码
 
@@ -45,7 +45,7 @@ var result = foos.ToDataTable(mapper);
 | 1 | 2 | 李4 |
 | 2 | 3 |  |
 
-### 导出至Excel(NPOI/XSSF) [XSSFSheetTest.cs/TestOutput](/LambdaIO/LambdaIO.Test/XSSFSheetTest.cs)
+### 导出至Excel(NPOI/XSSF) [XSSFSheetTest.cs/TestOutput](/LambdaIO.Test/XSSFSheetTest.cs)
 
 ###### 代码示例
 ```
